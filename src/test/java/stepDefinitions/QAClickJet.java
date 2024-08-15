@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import io.cucumber.java.en.Given;
@@ -19,6 +20,7 @@ public class QAClickJet {
     List<WebElement> country;
     Timeouts implicitlyWait = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     String text;
+    String selCur;
 	@Given("User is on the QAClickJet landing Page")
 	public void user_is_on_the_qa_click_jet_landing_page() {		
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
@@ -60,4 +62,19 @@ public class QAClickJet {
 		System.out.println(text2);
 	Assert.assertEquals(text2, "Round Trip");
 	}
+	
+	@When("the user open currency dropdown and select the currency")
+	public void the_user_open_currency_dropdown_and_select_the_currency() {
+WebElement dropDown = driver.findElement(By.xpath("(//select[@id='ctl00_mainContent_DropDownListCurrency'])[1]"));
+Select currency=new Select(dropDown);
+currency.selectByValue("INR");
+selCur = currency.getFirstSelectedOption().getText();
+
+	}
+	@Then("the selected currency should be displayed in the currency filed.")
+	public void the_selected_currency_should_be_displayed_in_the_currency_filed() {
+	    Assert.assertEquals(selCur, "INR");
+	}
+	
+	
 }

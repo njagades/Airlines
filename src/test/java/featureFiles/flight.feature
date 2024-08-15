@@ -10,12 +10,6 @@ Feature: Validate QAClickJet landing page
     Given User is on the QAClickJet landing Page
     When the user click  the check box  
     Then the UI should change accordingly.
-@dynamic_dropdown
-    Scenario: validate the from and To dynamic dropdown
-    Given User is on the QAClickJet landing Page
-    When the user click from dropdown and select the country and choose the city
-    And the user select the To City
-    Then the selected city should be displayed in the From and To filled.
     
     #Scenario: validate the passengers dropdown
     #Given User is on the QAClickJet landing Page
@@ -23,11 +17,11 @@ Feature: Validate QAClickJet landing page
     #And the user clicks on the Done button
     #Then the number of added adults should be displayed in the passengers filed.
    
- 
-    #Scenario: validate the currency dropdown
-    #Given User is on the QAClickJet landing Page
-    #When the user open currency dropdown and select the currency
-    #Then the selected currency should be displayed in the currency filed.
+@Static_dropdown
+    Scenario: validate the currency dropdown
+    Given User is on the QAClickJet landing Page
+    When the user open currency dropdown and select the currency
+    Then the selected currency should be displayed in the currency filed.
     
     
   
