@@ -8,7 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import io.cucumber.java.en.Given;
@@ -21,6 +23,7 @@ public class QAClickJet {
 	Timeouts implicitlyWait = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	String text;
 	String selCur;
+	 WebDriverWait wait;
 
 	@Given("User is on the QAClickJet landing Page")
 	public void user_is_on_the_qa_click_jet_landing_page() {
@@ -99,6 +102,21 @@ public class QAClickJet {
 	public void the_number_of_added_adults_should_be_displayed_in_the_passengers_filed() {
 		String  adultinfo = driver.findElement(By.xpath("(//div[@id='divpaxinfo'])[1]")).getText();
 		Assert.assertEquals(adultinfo, "3 Adult");
+	}
+	
+	@When("click on date on date feild")
+	public void click_on_date_on_date_feild() {
+	 driver.findElement(By.name("ctl00$mainContent$view_date1")).click();
+	wait=new WebDriverWait(driver,Duration.ofSeconds(5));
+	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='16']")));
+	 driver.findElement(By.xpath("//a[text()='16']")).click();
+	}
+	@Then("Date selected date will be displayed on date feild")
+	public void date_selected_date_will_be_displayed_on_date_feild() {
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("ctl00$mainContent$view_date1")));
+		String selDate = driver.findElement(By.name("ctl00$mainContent$view_date1")).getText();
+		System.out.println(selDate);
+		
 	}
 
 }

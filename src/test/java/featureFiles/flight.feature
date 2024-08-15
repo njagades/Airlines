@@ -24,6 +24,12 @@ Feature: Validate QAClickJet landing page
     When the user open currency dropdown and select the currency
     Then the selected currency should be displayed in the currency filed.
     
+@Date_Field
+    Scenario: Validate the date feild
+    Given User is on the QAClickJet landing Page
+    When click on date on date feild
+    Then Date selected date will be displayed on date feild    
+    
     
   
     
