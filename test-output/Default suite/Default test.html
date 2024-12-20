@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>2/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Aug 15 20:49:05 IST 2024</td>
+<td>Started on:</td><td>Sat Aug 31 14:45:43 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>4 seconds (4694 ms)</td>
+<tr><td>Total time:</td><td>13 seconds (13414 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,39 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='cucumberOptions.TestNgTestRunner.runScenario()'><b>runScenario</b><br>Test class: cucumberOptions.TestNgTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "validate the auto suggestive dropdown", "Validate QAClickJet landing page"</td>
+<td><div><pre>java.lang.AssertionError: expected [null] but found []
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at org.testng.Assert.assertEquals(Assert.java:666)
+	at stepDefinitions.QAClickJet.the_selected_country_should_be_displayed_in_the_field(QAClickJet.java:61)
+	at ✽.the selected country should be displayed in the field.(file:///C:/Airlines/src/test/java/featureFiles/flight.feature:7)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1895203464", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1895203464'><pre>java.lang.AssertionError: expected [null] but found []
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at org.testng.Assert.assertEquals(Assert.java:666)
+	at stepDefinitions.QAClickJet.the_selected_country_should_be_displayed_in_the_field(QAClickJet.java:61)
+	at ✽.the selected country should be displayed in the field.(file:///C:/Airlines/src/test/java/featureFiles/flight.feature:7)
+</pre></div></td>
+<td>5</td>
+<td>cucumberOptions.TestNgTestRunner@433defed</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,10 +109,15 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='cucumberOptions.TestNgTestRunner.runScenario()'><b>runScenario</b><br>Test class: cucumberOptions.TestNgTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Validate the date feild", "Validate QAClickJet landing page"</td>
+<td title='cucumberOptions.TestNgTestRunner.runScenario()'><b>runScenario</b><br>Test class: cucumberOptions.TestNgTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "validate the currency dropdown", "Validate QAClickJet landing page"</td>
 <td></td>
-<td>4</td>
-<td>cucumberOptions.TestNgTestRunner@5e2c3d18</td></tr>
+<td>3</td>
+<td>cucumberOptions.TestNgTestRunner@433defed</td></tr>
+<tr>
+<td title='cucumberOptions.TestNgTestRunner.runScenario()'><b>runScenario</b><br>Test class: cucumberOptions.TestNgTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "validate the check box", "Validate QAClickJet landing page"</td>
+<td></td>
+<td>3</td>
+<td>cucumberOptions.TestNgTestRunner@433defed</td></tr>
 </table><p>
 </body>
 </html>

@@ -5,31 +5,37 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class QAClickJet {
-	WebDriver driver = new ChromeDriver();
-	List<WebElement> country;
-	Timeouts implicitlyWait = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-	String text;
-	String selCur;
-	 WebDriverWait wait;
+    WebDriver driver;
+    List<WebElement> country;
+    String text;
+    String selCur;
+    WebDriverWait wait;
+    @Before
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
 
-	@Given("User is on the QAClickJet landing Page")
-	public void user_is_on_the_qa_click_jet_landing_page() {
-		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
-	}
-
+    @Given("User is on the QAClickJet landing Page")
+    public void user_is_on_the_qa_click_jet_landing_page() {
+        driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+    }
+    
 	@When("enter the country name partially<{string}>")
 	public void enter_the_country_name_partially(String string) {
 		driver.findElement(By.xpath("//input[@id='autosuggest']")).sendKeys(string);
@@ -55,19 +61,22 @@ public class QAClickJet {
 		Assert.assertEquals(selectedCountryName, text);
 	}
 
-	@When("the user click  the check box")
-	public void the_user_click_the_check_box() {
-		driver.findElement(By.xpath("//input[@id='ctl00_mainContent_rbtnl_Trip_1']")).click();
-	}
 
-	@Then("the UI should change accordingly.")
-	public void the_ui_should_change_accordingly() {
-		String text2 = driver.findElement(By.xpath("//label[@for='ctl00_mainContent_rbtnl_Trip_1']")).getText();
-		System.out.println(text2);
-		Assert.assertEquals(text2, "Round Trip");
-	}
 
-	@When("the user open currency dropdown and select the currency")
+    @When("the user click the check box")
+    public void the_user_click_the_check_box() {
+        WebElement checkBox = driver.findElement(By.xpath("//input[@id='ctl00_mainContent_rbtnl_Trip_1']"));
+        checkBox.click();
+    }
+
+    @Then("the UI should change accordingly.")
+    public void the_ui_should_change_accordingly() {
+        WebElement label = driver.findElement(By.xpath("//label[@for='ctl00_mainContent_rbtnl_Trip_1']"));
+        String actualText = label.getText();
+        String expectedText = "Round Trip";
+        Assert.assertEquals(actualText, expectedText, "The label text is not as expected.");
+    }
+    @When("the user open currency dropdown and select the currency")
 	public void the_user_open_currency_dropdown_and_select_the_currency() {
 		WebElement dropDown = driver
 				.findElement(By.xpath("(//select[@id='ctl00_mainContent_DropDownListCurrency'])[1]"));
@@ -120,3 +129,10 @@ public class QAClickJet {
 	}
 
 }
+
+   
+	
+
+
+
+
